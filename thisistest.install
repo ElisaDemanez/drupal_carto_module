@@ -1,0 +1,43 @@
+<?php
+
+
+/**
+* Implementation of hook_install().
+*/
+function thisistest_install() {
+// Use schema API to create database table.
+drupal_install_schema('thisistest');
+}
+
+
+
+/**
+* Implementation of hook_uninstall().
+*/
+function thisistest_uninstall() {
+// Remove tables.
+drupal_uninstall_schema('thisistest');
+}
+
+
+/**
+* Implementation of hook_schema().
+*/
+function thisistest_schema() {
+  $schema['thisistest_maps'] = array(
+    'fields' => array(
+    'id' => array('type' => 'serial', 'unsigned' => TRUE, 'not null' => TRUE),
+    'name' => array( 'type' => 'varchar','length' => 128, 'not null' => TRUE, 'default' => ''),
+    'description' => array( 'type' => 'varchar','length' => 255, 'default' => ''),
+    'secondary_color' => array( 'type' => 'varchar','length' => 64, 'not null' => TRUE, 'default' => ''),
+    'categories_displayed' => array( 'type' => 'varchar','length' => 2, 'not null' => TRUE, 'default' => ''),
+    'created_at' => array( 'type' => 'datetime','length' => 64, 'not null' => TRUE ),
+    'modified_at' => array( 'type' => 'datetime','length' => 64, 'not null' => TRUE ),
+    'created_by' => array( 'type' => 'varchar','length' => 64, 'not null' => TRUE, 'default' => ''),
+
+    ),
+    'primary key' => array('id'),
+  );
+  return $schema;
+}
+

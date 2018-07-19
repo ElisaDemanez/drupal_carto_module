@@ -1,0 +1,4 @@
+; $Id$
+name = THIS IS TEST
+description = Custom functions for this site.
+core = 6.x
